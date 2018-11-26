@@ -1,0 +1,134 @@
+/*-----------头部样式-----------------*/
+#container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+#container #header{
+    width:100%;
+    height:0.44rem;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #425b93;
+}
+#container #header span{
+    width:0.6rem;
+    height:100%;
+    text-align: center;
+    line-height: 0.44rem;
+    font-size: 0.14rem;
+}
+#container #header span a{
+    color: #fff;
+}
+#container #header span b{
+    font-weight: 500;
+    width:0.2rem;
+    height:0.44rem;
+    font-size: 0.18rem;
+    line-height:0.44rem;
+    text-align: center;
+}
+#container #header p{
+    flex:1;
+    height:100%;
+    line-height: 0.44rem;
+    text-align: center;
+    font-size: 0.16rem;
+}
+
+/*---------中间部分样式----------*/
+
+#container #content{
+    flex:1;
+    height:100%;
+    box-sizing: border-box;
+    padding:0.3rem;
+    display: flex;
+    flex-direction:column ;
+}
+#container #content .logo{
+
+}
+
+#container #content #login{
+    display: flex;
+    flex-direction: column;
+}
+#container #content #login .list{
+    height:0.4rem;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:0.15rem;
+    border:2px solid #eaeaea;
+    border-radius: 5px;
+}
+#container #content #login .group{
+    border:2px solid #eaeaea;
+    border-radius: 5px;
+    line-height:40px;
+    height:40px;
+}
+#container #content #login .list label{
+    width:0.4rem;
+    height:0.4rem;
+    font-size: 0.26rem;
+    text-align: center;
+    line-height: 0.4rem;
+    color: #425b93;
+}
+#container #content #login .list input{
+    flex:1;
+    height:0.36rem;
+    border:0;
+    padding-left:0.1rem;
+
+
+}
+
+#container #content #login #btn{
+    height:0.4rem;
+    width:100%;
+    border:0;
+    margin-top:0.4rem;
+    background:#425b93;
+    font-size: 0.16rem;
+    color: #fff;
+    line-height: 0.4rem;
+    text-align: center;
+    border-radius: 0.05rem;
+}
+
+#container #content .info{
+    margin-top:0.1rem;
+    height: 0.3rem;
+    line-height: 0.3rem;
+    text-align: right;
+    font-size: 0.14rem;
+}
+#container #content .info a{
+    color: #666;
+}
+#container #content .info a span{
+    margin-right:0.03rem;
+    font-size: 0.15rem;
+    line-height:0.3rem;
+}
+/*-----------底部样式-------------*/
+
+#container #footer{
+    width:100%;
+    height:0.5rem;
+    color: #666;
+    line-height:0.5rem;
+    text-align: center;
+    border-top:1px solid #efefef;
+}
+#container #footer p a{
+    color: #425b93;
+    font-size: 0.14rem;
+}

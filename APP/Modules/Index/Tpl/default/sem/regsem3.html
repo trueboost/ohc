@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用户注册</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <link rel="stylesheet" href="/Public/gec/Home/css/weui.min.css">
+    <link rel="stylesheet" href="/Public/gec/web/css/jquery-weui.min.css">
+
+
+</head>
+<body style="background-color: #eee">
+	<div id="logo"style="margin: 0 auto;padding: 10px 0; width: 90%; height: auto;text-align: center;margin-top: 20px">
+		<img src="/Public/gec/web/img/supy.png" id="logo" style="width:60%;margin-top:10px;border-radius:10px;margin-bottom:10px" alt=""/>
+	</div>
+	<span style="font-size:14px;text-align:center;color:red;margin-left:8%">温馨提示：支付宝账号必须实名认证，如果审核发现支付宝没有实名认证或者姓名不对应将直接封号！</span>
+	
+	<form action="" id="myform" method="post"style="margin-top:20px">
+		<input type="hidden" name="uid" value="1">
+    	<!--<input type="text" placeholder="用户名,只能使用数字,字母,汉字且长度为1-6" name="username" required="required" id="name" pattern="[A-Za-z0-9\u4e00-\u9fa5]{1,6}" title="只能使用数字,字母,汉字且长度为1-6">-->
+		<div style=" margin: 0 auto;width: 94%;background: #fff;border: 1px solid #e3e3e3;border-radius: 5px;">
+			<div style="margin-left: 5%;width: 95%; height: auto;border-bottom: 1px solid #e3e3e3;padding: 10px 0 10px;">
+				手机号：		<input name="mobile"  id="mobile"  value="" maxlength="11" type="text" style="width: 70%;color: #999999;font-size: 1em;-webkit-appearance: none;border: none;outline: medium;" autocomplete="off" placeholder="请输入手机号" /> 
+				
+
+			</div>
+            
+             <div style="margin-left: 5%;width: 95%; height: auto;border-bottom: 1px solid #e3e3e3;padding: 10px 0 10px;">
+				图形验证码：<input type="text" placeholder="图形验证码" required id="verify" name="verify" style="width: 40%;color: #999999;font-size: 1em;-webkit-appearance: none;border: none;outline: medium;">
+				<img src="{:U('Sem/verify')}" onClick="this.src='{:U('Sem/verify','','')}?'+Math.random();" width="60" height="25">
+            
+            </div>
+            
+            
+            
+            
+			<div class="code" style="margin-left: 5%;width: 95%; height: auto;border-bottom: 1px solid #e3e3e3;padding: 10px 0 10px;">
+				验证码：<input type="text" placeholder="短信验证码" name="code" required id="code" class="fl"style="width:40%;color: #999999;font-size: 1em;-webkit-appearance: none;border: none;outline: medium;">
+				<span class="fr" id="count_down" onClick="send_sms_reg_code()" style="background-color: #FF8201;display: inline-block;width: 35%;text-align: center;font-size: 1em;padding: 0px 0 0px;border-radius: 5px">发送验证码</span>
+			</div>
+			
+              <div style="margin-left: 5%;width: 95%; height: auto;border-bottom: 1px solid #e3e3e3;padding: 10px 0 10px;">
+				支付宝账号：<input type="text" placeholder="请输入支付宝账号" required name="zhifubao" style="width: 70%;color: #999999;font-size: 1em;-webkit-appearance: none;border: none;outline: medium;">
+			</div>   
+            
+			<div style="margin-left: 5%;width: 95%; height: auto;border-bottom: 1px solid #e3e3e3;padding: 10px 0 10px;">
+				登陆密码：<input type="password" placeholder="请输入登录密码" required name="password" style="width: 70%;color: #999999;font-size: 1em;-webkit-appearance: none;border: none;outline: medium;">
+			</div>
+			<div style="margin-left: 5%;width: 95%; height: auto;border-bottom: 1px solid #e3e3e3;padding: 10px 0 10px;">
+			  	确定密码：<input type="password" placeholder="确定登录密码" required name="password1" style="width: 70%;color: #999999;font-size: 1em;-webkit-appearance: none;border: none;outline: medium;">
+			</div>
+			
+			<div style="margin-left: 5%;width: 95%; height: auto;border-bottom: 1px solid #e3e3e3;padding: 10px 0 10px;">
+				交易密码：<input type="password" placeholder="请输入安全密码" required name="password2" style="width: 70%;color: #999999;font-size: 1em;-webkit-appearance: none;border: none;outline: medium;">
+			</div>
+			<div style="margin-left: 5%;width: 95%; height: auto;border-bottom: 1px solid #e3e3e3;padding: 10px 0 10px;">
+			  	确定密码：<input type="password" placeholder="确定安全密码" required  name="password21" style="width: 70%;color: #999999;font-size: 1em;-webkit-appearance: none;border: none;outline: medium;">
+			</div>
+            
+            
+            <div style="margin-left: 5%;width: 95%; height: auto;border-bottom: 1px solid #e3e3e3;padding: 10px 0 10px;">
+			  	转账凭证：<span class="sima1"><img src="/Public/gec/web/img/aa4.jpg" onclick="document.getElementById('upfile').click()" id="clickimg" width="120" height="120"></span>
+                
+                <span style="color:#F00; font-size:12px;">例：<img src="/Public/gec/web/img/zzpz.jpg" width="50" height="60" id="imgshow"></span>
+				 <input type="file" style=" width:120px; height:120px;opacity:0;filter:alpha(opacity=80);cursor:pointer;" name="photoimg" id="upfile"/>
+            
+            </div>
+            
+            
+			<input type="hidden" name="parent" id="parent" value="{$uid}"/>
+            <input type="hidden" name="alipay_voucher" value="" id="alipay_voucher">
+		</div>
+		 <!--  <div id="yinsi" style="padding: 10px 0 10px;margin-left: 5%"><input name="agree" type="checkbox" value="1" class="text"  id="check" checked/>&nbsp;<span>我已阅读和同意<span id='btnBook'>《服务协议及隐私条款》</span></span></div> -->
+		<button type="button" id="submit" class="btn_submit_my" style="margin-left: 5%;width: 90%;height: 2.5em;line-height: 2.5em;font-size: 1em;letter-spacing: 1px;text-align: center;color: #fff;border-radius: 5px;-webkit-border-radius: 5px;-moz-border-radius: 5px;background-color: #FF8201;border: 0; margin-bottom:15px;">注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;册</button>
+		
+		
+		
+	</form>
+
+<script src="/Public/gec/reg/js/jquery-1.11.3.min.js"></script>
+<script src="/Public/gec/web/js/jquery-weui.min.js"></script>
+<script src="/Public/gec/web/js/jquery.form.js"></script>
+ <script src="/Public/js/layer/layer.js"></script>
+<script type="text/javascript">
+	$(".btn_submit_my").click(function(){
+		
+			$.ajax({
+				url:'{:U("Index/Sem/regSempost")}',
+				type:'POST',
+				data:$("#myform").serialize(),
+				dataType:'json',
+				success:function(json){
+						alert(json.info);
+						if(json.result ==1){
+							window.location.href='{:U("Index/Login/index")}';	
+						}
+					
+					
+				},
+				error:function(){
+						alert("网络故障");	
+				}
+					
+				
+				
+			})	
+		
+	})
+
+
+</script>
+
+
+
+<script type="text/javascript">
+	$("#imgshow").click(function(){
+		
+			layer.open({
+			  type: 1,
+			  shadeClose: true,
+			  shade: 0.8,
+			  title: false, //不显示标题
+			  area: ['80%', '520px'],
+			  
+			  content: '<img src="/Public/gec/web/img/zzpz.jpg" width="100%" height="500">', //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+			
+			});
+		
+	})
+
+</script>
+
+ <script type="text/javascript">
+ 
+$(function(){
+	 
+	
+	$("#upfile").wrap("<form action='{:U('Index/Sem/uploads')}' method='post' enctype='multipart/form-data'></form>"); 
+	
+	$("#upfile").off().on('change',function(){
+		//var status = $("#up_status");
+		//var btn = $("#up_btn");
+		
+		var objform = $(this).parents();
+		    objform.ajaxSubmit({
+			dataType:  'json',
+			target: '#preview', 
+			//beforeSubmit:function(){
+				//status.show();
+				//btn.hide();
+			//}, 
+			success:function(data){
+				if(data.result==1){
+					//status.hide();
+					//btn.show();
+					$("#clickimg").attr('src','/Public/'+data.url)
+					$("#alipay_voucher").val('/Public/'+data.url)
+				}else{
+					
+					$('.sima1').html('<font style="color:red;">'+data.msg+'</font>')
+					
+					}
+			}, 
+			error:function(){
+				//status.hide();
+				//btn.show();
+			} 
+		});
+		
+		
+		
+	});
+	
+	
+	
+	
+	
+	
+	
+   });
+
+
+ 
+ </script>
+ 
+
+
+
+
+<script type="text/javascript">
+	// 发送手机短信
+    function send_sms_reg_code(){
+        var mobile = $('#mobile').val();
+		var verify=$("#verify").val();
+		
+        if(!checkMobile(mobile)){
+            $.alert('请输入正确的手机号码');
+            return;
+        }
+		
+		if(verify==''){
+			$.alert('请输入正确的图形验证码');
+            return;	
+		}
+		
+		
+        var url = "/index.php/index/sem/send_sms_reg_code/mobile/"+mobile+"/verify/"+verify;
+        $.get(url,function(data){
+            obj = $.parseJSON(data);
+            if(obj.status == 1)
+			{
+				$('#count_down').attr("disabled","disabled");				
+				intAs = 60; // 手机短信超时时间
+                jsInnerTimeout('count_down',intAs);						
+			}
+			$.alert(obj.msg);// alert(obj.msg);
+            
+        })
+    }
+   $('#count_down').removeAttr("disabled");
+    //倒计时函数
+    function jsInnerTimeout(id,intAs)
+    {
+        var codeObj=$("#"+id);
+      //var intAs = parseInt(codeObj.attr("IntervalTime"));
+
+        intAs--;
+        if(intAs<=-1)
+        {
+            codeObj.removeAttr("disabled");
+//            codeObj.attr("IntervalTime",60);
+            codeObj.text("获取验证码");
+            return true;
+        }
+
+        codeObj.text(intAs+'秒');
+//        codeObj.attr("IntervalTime",intAs);
+
+        setTimeout("jsInnerTimeout('"+id+"',"+intAs+")",1000);
+    };
+function checkMobile(tel) {
+    var reg = /(^1[3|4|5|7|8][0-9]{9}$)/;
+    if (reg.test(tel)) {
+        return true;
+    }else{
+        return false;
+    };
+}
+</script>
+<include file="./Public/ajaxsubmit/ajaxsubmit_nojquery.html" />
+</body>
+</html>
+
+
+
+

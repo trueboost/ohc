@@ -1,0 +1,149 @@
+<include file="./APP/Modules/Index/Tpl/default/Public/header.html" />
+
+<body>
+	<!--顶部开始-->
+	<div class="header">
+    <span class="header_l"><a href="javascript:history.go(-1);"><i class="fa fa-chevron-left"></i></a></span>
+    <span class="header_c">个人中心</span>
+		
+		<a href="{:U('Index/Index/logout')}" style="position:absolute;top:8px;right:3%;width:60px;height:25px;line-height:25px;text-align:center;color:#fff;font-size:12px; background:#FF8201; border-radius:4px;">安全退出</a>
+</div>
+	<div class="height40"></div>
+	<!--顶部结束-->
+<style>
+	.user_sy li{
+		width: 33.3%;
+	}
+</style>
+	<div style="background-color: #fa9a37 ;padding: 0px 0px 10px 0px;  width: 100%;overflow: hidden;color: #FFFFFF;font-size:1.5em; height:110px; ">
+	
+    
+        <?php
+        	if(C('recharge_is') ==1){
+        
+        ?>
+    
+        <div style="width:80%; border-radius:4px; margin:0 auto;"><a href="{:U('Index/Index/recharge')}" style="width:100%; padding:3px 5px; color:#ffffff; background:#00CD00; display:inline-block; border-radius:4px; text-align:center; font-size:14px;">矿&nbsp;&nbsp;机&nbsp;&nbsp;限&nbsp;&nbsp;时&nbsp;&nbsp;抢&nbsp;&nbsp;购</a></div>
+         <?php }else{?>
+         
+         	<div style=" width:100%; height:35px;"></div>
+         
+         <?php }?>
+        
+		<!--<div style="width: 95%;float: right;text-align: center;overflow: hidden;text-align:right;">
+            <p style="font-size:12px">可用SUBY:</p>
+            <p style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;font-size:30px">{$minfo.jinbi}</p>
+        </div>-->
+        <div style="width: 50%;float: left;overflow: hidden; margin-top:10px;">
+            
+            <p style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;font-size:14px; padding-left:7%;">我的编号：<span style="font-size:16px;">{$minfo.id}</span></p>
+            <p style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;font-size:14px; padding-left:7%;margin-top:12px;">我的等级：<span style="font-size:16px;">{:group($minfo['level'])}</span></p>
+        </div>
+        
+        
+		<div style="width:50%;float: right;text-align: center;overflow: hidden;text-align:right;"></p>
+            <span style="font-size:14px;margin-right:2%">可用CEC: <span style="overflow: hidden;font-size:18px; margin-right:7%;">{$minfo.jinbi|four_number=###}</span></p>
+            <span style="font-size:14px;margin-right:2%">冻结CEC: <span style="font-size:18px; margin-right:7%;">{$minfo.qjinbi|four_number=###}</span></p>
+
+        </div>
+        
+        
+	</div>
+<div class="weui_grids" style="background-color: #f9f9f9">
+	<a href="{:U('Index/Shop/orderlist')}" class="weui_grid js_grid" data-id="toast">
+		<div class="weui_grid_icon">
+			<i class="iconfont" style="color: #FE9400;display: block;width: 16px;margin:0 auto;font-size: 2em;margin-left: -2px;">&#xe601;</i>
+		</div>
+		<p class="weui_grid_label" style="margin-top: 12px">我的矿机</p>
+	</a>
+
+	<a href="{:U('Index/Emoney/myjiaoyi')}" class="weui_grid js_grid" data-id="toast">
+		<div class="weui_grid_icon">
+			<i class="iconfont" style="color: #F4403C;display: block;width: 16px;margin:0 auto;font-size: 2em;margin-left: -2px;">&#xe63f;</i>
+		</div>
+		<p class="weui_grid_label" style="margin-top: 12px">我的交易</p>
+	</a>
+
+<a href="{:U('Index/Financial/kslist')}" class="weui_grid js_grid" data-id="toast">
+	<div class="weui_grid_icon">
+		<i class="iconfont" style="color: #7E4BE5;display: block;width: 16px;margin:0 auto;font-size: 2em;margin-left: -2px;">&#xe628;</i>
+	</div>
+	<p class="weui_grid_label" style="margin-top: 12px">矿机收益</p>
+	</a>
+          
+	<a href="{:U('Index/Financial/kglist')}" class="weui_grid js_grid" data-id="toast">
+		<div class="weui_grid_icon">
+			<i class="iconfont" style="color: #FEB900;display: block;width: 16px;margin:0 auto;font-size: 2em;margin-left: -2px;">&#xe603;</i>
+		</div>
+		<p class="weui_grid_label" style="margin-top: 12px">帐户明细</p>
+	</a>
+	
+          <a href="{:U('Index/Financial/kzlist')}" class="weui_grid js_grid" data-id="toast">
+		<div class="weui_grid_icon">
+			<i class="iconfont" style="color: #1C91E2;display: block;width: 16px;margin:0 auto;font-size: 2em;margin-left: -2px;">&#xe615;</i>
+		</div>
+		<p class="weui_grid_label" style="margin-top: 12px">工会收益</p>
+	</a>	
+		
+	<a href="{:U('Index/Account/myAccount')}" class="weui_grid js_grid" data-id="toast">
+		<div class="weui_grid_icon">
+			<i class="iconfont" style="color: #e64340;display: block;width: 16px;margin:0 auto;font-size: 2em;margin-left: -2px;">&#xe85d;</i>
+		</div>
+		<p class="weui_grid_label" style="margin-top: 12px">我的工会</p>
+	</a>
+
+
+
+	<a href="{:U('Account/tuiguangma')}" class="weui_grid js_grid" data-id="toast">
+		<div class="weui_grid_icon">
+			<i class="iconfont" style="color: #09B9F4;display: block;width: 16px;margin:0 auto;font-size: 2em;margin-left: -2px;">&#xe600;</i>
+		</div>
+		<p class="weui_grid_label" style="margin-top: 12px">推广中心
+</p>
+	</a>
+	<a href="{:U('Index/PersonalSet/myInfo')}" class="weui_grid js_grid" data-id="toast">
+		<div class="weui_grid_icon">
+			<i class="iconfont" style="color: #F63C86;display: block;width: 16px;margin:0 auto;font-size: 2em;margin-left: -2px;">&#xe684;</i>
+		</div>
+		<p class="weui_grid_label" style="margin-top: 12px">个人资料</p>
+	</a>
+	<a href="{:U('Index/PersonalSet/updatePass')}" class="weui_grid js_grid" data-id="toast">
+		<div class="weui_grid_icon">
+			<i class="iconfont" style="color: #A4ABFE;display: block;width: 16px;margin:0 auto;font-size: 2em;margin-left: -2px;">&#xe681;</i>
+		</div>
+		<p class="weui_grid_label" style="margin-top: 12px">密码管理</p>
+	</a>
+	<a href="{:U('Index/msg/addmsg')}" class="weui_grid js_grid" data-id="toast">
+		<div class="weui_grid_icon">
+			<i class="iconfont" style="color: #A4ABFE;display: block;width: 16px;margin:0 auto;font-size: 2em;margin-left: -2px;">&#xe687;</i>
+		</div>
+		<p class="weui_grid_label" style="margin-top: 12px">联系我们</p>
+	</a>
+	<a href="{:U('Index/new/news')}" class="weui_grid js_grid" data-id="toast" >
+			<div class="weui_grid_icon" style="position:relative;">
+				<i class="iconfont" style="color: #15D897;display: block;width: 16px;margin:0 auto;font-size: 2em;margin-left: -2px;">&#xe62e;</i>
+				<span style="position:absolute; top:0px; right:-20px; background:#F00; color:#ffffff; font-size:12px; font-weight:bold; width:20px; height:20px; border-radius:50%; text-align:center;">{$w_read}</span>
+            
+            </div>
+			<p class="weui_grid_label" style="margin-top: 12px">公告中心</p>
+            
+	</a>
+</div>
+	
+
+
+
+    	<div class="height55"></div>
+
+<!--底部开始-->
+
+<include file="./APP/Modules/Index/Tpl/default/Public/footer.html" />
+
+	<!--底部结束-->
+	<script src="/Public/web/js/jquery-weui.min.js"></script>
+		<p style="display:none;">
+
+</p>
+
+</body>
+</html>

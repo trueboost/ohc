@@ -1,0 +1,116 @@
+ 
+<include file="./APP/Modules/Index/Tpl/default/Public/header.html" />
+
+<!--顶部开始-->
+    <header class="header">
+        <span class="header_l"><a href="javascript:history.go(-1);"><i class="fa fa-chevron-left"></i></a></span>
+        <span class="header_c">个人资料</span>
+		<!--<span style="position: absolute;right: 10%;top: 0px;text-align:center;width:20%;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;font-size: 12px; ">{$memberinfo['username']} </span>
+		<span class="header_r"><a href="{:U(GROUP_NAME .'/personal_set/myInfo')}"><i class="fa fa-user"></i></a></span>-->
+    </header>
+    <div class="height40;"></div>
+    <!--顶部结束-->
+    <!--列表开始-->
+	
+	 <form  method="post" action="" style="margin-bottom:80px;font-size:14px" enctype="multipart/form-data">
+
+		<ul style="width: 80%;margin-left: 10%;color: #000" >
+	
+		<li style="text-align: center;width:100%"><div style="width: 60px;height: 60px;margin-bottom: 10px;border-radius: 100%" src= ></div></li>
+	
+			<li style="height: 30px;line-height: 30px;margin-top: 5px;width:100%">登陆帐号：&nbsp;&nbsp;&nbsp;{$memmber['mobile']}</li>
+			<li style="height: 30px;line-height: 30px;margin-top: 5px;width:100%">会员等级：&nbsp;&nbsp;&nbsp;{:group($memmber['level'])}</li>	
+            <li style="height: 30px;line-height: 30px;margin-top: 5px;width:100%">会员编号：&nbsp;&nbsp;&nbsp;{$memmber['id']}</li>	
+            <li style="height: 30px;line-height: 30px;margin-top: 5px;width:100%">手机号码：&nbsp;&nbsp;&nbsp;{$memmber['mobile']}</li>
+	<span style="font-size:14px;text-align:center;color:red;margin-left:0%">温馨提示：&nbsp;&nbsp;&nbsp;支付宝账户名即为你支付宝实名认证的真实姓名，如果审核发现支付宝没有实名认证或者姓名不对应将无法通过审核！</span>
+</li>		
+			<li style="height: 30px;line-height: 30px;margin-top: 5px;width:100%">真实姓名：&nbsp;&nbsp;&nbsp;</span>
+            	 
+                 <if condition="$memmber['checkstatus'] eq 2">
+                 	<input name="truename" type="text" value="{$memmber['truename']}" style="height: 30px;line-height: 30px;width: 59%;border-radius: 5px;border: 1px solid #eeeeee;padding-left: 5px"  autocomplete="off" placeholder="支付宝账户名"/>
+                  <else/>
+                  
+                  	<if condition="!empty($memmber['truename'])">
+            			{$memmber['truename']}
+                    <else/>
+            			<input name="truename" type="text" value="{$memmber['truename']}" style="height: 30px;line-height: 30px;width: 59%;border-radius: 5px;border: 1px solid #eeeeee;padding-left: 5px"  autocomplete="off" placeholder="支付宝收款人姓名"/>
+                    
+                    </if> 
+                  
+                  
+                  
+                  
+                 </if>
+                 
+                 
+            	 
+			</li>
+			
+           
+            
+			<li style="height: 30px;line-height: 30px;margin-top: 5px;width:100%">支&nbsp;&nbsp;付&nbsp;&nbsp;宝：&nbsp;&nbsp;&nbsp;</span>
+            
+            	<if condition="$memmber['checkstatus'] eq 2">	
+                		<input type="text" id="zhifubao" name="zhifubao"  value="{$memmber['zhifubao']}" placeholder="请输入你的支付宝账号" style="height: 30px;line-height: 30px;width: 59%;border-radius: 5px;border: 1px solid #eeeeee;padding-left: 5px" />
+                <else/>
+                	 <if condition="!empty($memmber['zhifubao'])">
+                		{$memmber['zhifubao']}
+               		 <else/>
+                		<input type="text" id="zhifubao" name="zhifubao"  value="{$memmber['zhifubao']}" placeholder="请输入你的支付宝账号" style="height: 30px;line-height: 30px;width: 59%;border-radius: 5px;border: 1px solid #eeeeee;padding-left: 5px" />
+                	 </if> 
+                
+                </if> 
+               
+           	 
+            
+            
+           </li>
+			
+			<li style="height: 30px;line-height: 30px;margin-top: 5px;width:100%">微&nbsp;&nbsp;信&nbsp;&nbsp;号：&nbsp;&nbsp;&nbsp;</span>
+            
+            	<if condition="!empty($memmber['weixin'])">
+                	{$memmber['weixin']}
+                <else/>
+                	<input type="text" id="weixin" name="weixin"  value="{$memmber['weixin']}" placeholder="请输入你的微信号" style="height: 30px;line-height: 30px;width: 59%;border-radius: 5px;border: 1px solid #eeeeee;padding-left: 5px" />
+                 </if> 
+           	 
+            
+           </li>
+           
+           
+          <if condition="$memmber['checkstatus'] eq 0"> 
+          		<if condition="!empty($memmber['truename'])">
+         			<li style="height: 30px;line-height: 30px;margin-top: 5px;width:100%">审核结果：&nbsp;&nbsp;&nbsp;<font style="color:#F00;">待审核，最快10分钟审核通过</font></li>
+         		<else/>
+                	<li style="height: 30px;line-height: 30px;margin-top: 5px;width:100%">审核结果：&nbsp;&nbsp;&nbsp;<font style="color:#F00;">待完善支付宝收款人姓名和微信</font></li>
+                </if>
+          </if>	 
+           
+          <if condition="$memmber['checkstatus'] eq 3"> 
+         		<li style="height: 30px;line-height: 30px;margin-top: 5px;width:100%">审核结果：&nbsp;&nbsp;&nbsp;<font style="color:#F00;">审核已通过</font></li>
+          </if>	  
+           
+           
+		<if condition="!empty($memmber['liyou']) and $memmber['checkstatus'] eq 2">
+			<li style="height: 30px;line-height: 30px;margin-top: 5px;width:100%">审核结果：&nbsp;&nbsp;&nbsp;<font style="color:#F00;">{$memmber['liyou']}</font></li>
+       		<button type="submit" class="btn btn-primary btn-submit btn_submit" style="width: 100%;height: 30px;line-height: 30px;border-radius: 5px;border: 0px; background-color:#FF8201;margin-top: 5px;color: #FFFFFF;-webkit-appearance: none;">提 交</button>
+       
+       <else/>
+       	
+            <if condition="empty($memmber['weixin']) || empty($memmber['truename'])">
+               <button type="submit" class="btn btn-primary btn-submit btn_submit" style="width: 100%;height: 30px;line-height: 30px;border-radius: 5px;border: 0px; background-color:#FF8201;margin-top: 5px;color: #FFFFFF;-webkit-appearance: none;">提 交</button>
+            </if>	
+        
+       
+       </if>	
+        
+        	
+			
+		</ul>
+	</form>
+</div>
+<!--底部开始-->
+<include file="./APP/Modules/Index/Tpl/default/Public/footer.html" />
+<include file="./Public/ajaxsubmit/ajaxsubmit_nojquery.html" />
+</body>
+</html>
